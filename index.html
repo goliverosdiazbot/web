@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guido Oliveros Diaz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200;300;400;600;700;800;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+    body {
+      font-family: 'Muli', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #3d3d3f;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: #3d3d3f; color: #fff; }
+
+    /* ===== NAV ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: box-shadow 0.3s;
+    }
+
+    .navbar.scrolled { box-shadow: 0 40px 100px rgba(0,0,0,0.08); }
+
+    .nav-name {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 14px;
+      font-weight: 400;
+      color: #3d3d3f;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: #878787;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 100px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover { color: #3d3d3f; }
+    .nav-links a.active { color: #3d3d3f; background: #f5f5f5; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: 4px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 4px 6px;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      transition: all 0.2s;
+      opacity: 0.45;
+    }
+
+    .lang-btn:hover { opacity: 0.7; }
+    .lang-btn.active { opacity: 1; border-color: #e0e0e0; }
+
+    .nav-contact {
+      font-family: 'Muli', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: #000;
+      padding: 8px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: 0.8px;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-contact:hover { background: #3d3d3f; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #000;
+      margin: 4px 0;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 120px 32px 80px;
+    }
+
+    .hero-content { max-width: 700px; }
+
+    .hero-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 28px;
+      border: 3px solid #f0f0f0;
+      background: #f5f5f5;
+    }
+
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-tagline {
+      font-size: 13px;
+      color: #878787;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .hero-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #878787;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: 'Muli', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      background: #000;
+      padding: 14px 36px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: 1.2px;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { background: #3d3d3f; }
+
+    .btn-secondary {
+      font-family: 'Muli', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #3d3d3f;
+      background: transparent;
+      padding: 14px 36px;
+      border-radius: 100px;
+      text-decoration: none;
+      letter-spacing: 1.2px;
+      border: 1px solid #e0e0e0;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover { border-color: #3d3d3f; }
+
+    /* ===== SECTIONS ===== */
+    .section { padding: 100px 48px; }
+    .section.alt { background: #f9f9f9; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { margin-bottom: 56px; }
+
+    .section-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #878787;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Muli', sans-serif;
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 300;
+      color: #3d3d3f;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title strong { font-weight: 800; color: #000; }
+
+    .section-description {
+      font-size: 16px;
+      color: #878787;
+      font-weight: 300;
+      max-width: 520px;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+
+    /* ===== GRID ===== */
+    .grid { display: grid; gap: 20px; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .span-2 { grid-column: span 2; }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      border-radius: 8px;
+      padding: 36px;
+      transition: all 0.35s;
+      position: relative;
+    }
+
+    .alt .card { background: #fff; }
+
+    .card:hover {
+      box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+      transform: translateY(-3px);
+    }
+
+    .card-number {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
+      color: #c8c8c8;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .card h3 {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 18px;
+      font-weight: 400;
+      color: #3d3d3f;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #878787;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+
+    .chip {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: #f5f5f5;
+      color: #575757;
+      letter-spacing: 0.2px;
+    }
+
+    /* ===== METRICS ===== */
+    .metric-card { text-align: center; padding: 44px 24px; }
+
+    .metric-card .value {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 36px;
+      font-weight: 400;
+      color: #000;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .metric-card .desc {
+      font-size: 13px;
+      color: #878787;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline { position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: linear-gradient(to bottom, #3d3d3f, #e0e0e0);
+    }
+
+    .timeline-item { padding-left: 32px; padding-bottom: 36px; position: relative; }
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -3.5px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      background: #3d3d3f;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    .timeline-year {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 12px;
+      color: #878787;
+      margin-bottom: 2px;
+    }
+
+    .timeline-title {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 15px;
+      font-weight: 400;
+      color: #3d3d3f;
+      margin-bottom: 2px;
+    }
+
+    .timeline-sub { font-size: 14px; color: #b0b0b0; font-weight: 300; }
+
+    /* ===== CERTS ===== */
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border: 1px solid #f0f0f0;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      transition: all 0.2s;
+    }
+
+    .cert-item:hover { border-color: #d0d0d0; }
+
+    .cert-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #3d3d3f;
+      flex-shrink: 0;
+    }
+
+    .cert-item span { font-size: 14px; color: #575757; font-weight: 400; }
+
+    /* ===== EXTRAS BAR ===== */
+    .extras-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .extras-bar h3 {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 15px;
+      font-weight: 400;
+      color: #3d3d3f;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 60px 48px;
+      background: #f9f9f9;
+      border-top: 1px solid #f0f0f0;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      list-style: none;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a { font-size: 13px; color: #878787; text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: #000; }
+    .footer p { font-size: 13px; color: #b0b0b0; font-weight: 300; }
+
+    /* ===== ANIMATIONS ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* ===== MOBILE ===== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: #fff;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 18px;
+      color: #3d3d3f;
+      text-decoration: none;
+      padding: 12px 24px;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: #000; }
+
+    .mobile-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #3d3d3f;
+      cursor: pointer;
+    }
+
+    .mobile-lang {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links, .nav-right { display: none; }
+      .hamburger { display: block; }
+      .section { padding: 64px 24px; }
+      .hero { padding: 100px 24px 64px; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .span-2 { grid-column: span 1; }
+      .navbar { padding: 0 24px; }
+      .footer { padding: 48px 24px; }
+      .extras-bar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-name">Guido Oliveros Diaz</a>
+    <ul class="nav-links">
+      <li><a href="#expertise" data-es="Expertise" data-en="Expertise">Expertise</a></li>
+      <li><a href="#impacto" data-es="Impacto" data-en="Impact">Impacto</a></li>
+      <li><a href="#ia" data-es="IA & Tech" data-en="AI & Tech">IA & Tech</a></li>
+      <li><a href="#ecommerce">E-commerce</a></li>
+      <li><a href="#formacion" data-es="Formacion" data-en="Education">Formacion</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('es')" title="Español">🇦🇷</button>
+        <button class="lang-btn" onclick="setLang('en')" title="English">🇺🇸</button>
+      </div>
+      <a href="mailto:goliverosdiaz@gmail.com" class="nav-contact" data-es="CONTACTO" data-en="CONTACT">CONTACTO</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()">&times;</button>
+    <a href="#expertise" onclick="toggleMenu()">Expertise</a>
+    <a href="#impacto" onclick="toggleMenu()" data-es="Impacto" data-en="Impact">Impacto</a>
+    <a href="#ia" onclick="toggleMenu()" data-es="IA & Tech" data-en="AI & Tech">IA & Tech</a>
+    <a href="#ecommerce" onclick="toggleMenu()">E-commerce</a>
+    <a href="#formacion" onclick="toggleMenu()" data-es="Formacion" data-en="Education">Formacion</a>
+    <a href="mailto:goliverosdiaz@gmail.com" onclick="toggleMenu()" data-es="Contacto" data-en="Contact">Contacto</a>
+    <div class="mobile-lang">
+      <button class="lang-btn active" onclick="setLang('es')" title="Español">🇦🇷</button>
+      <button class="lang-btn" onclick="setLang('en')" title="English">🇺🇸</button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-avatar reveal">
+        <img src="CV 2.0/goliverosdiaz.com/images/Profile.jpg" alt="Guido Oliveros Diaz">
+      </div>
+      <p class="hero-label reveal reveal-d1">Guido Oliveros Diaz</p>
+      <p class="hero-tagline reveal reveal-d1" data-es="Director de Marketing, Data & AdTech | Enfoque C-Level | Equipos Cross-Functional | Automatizacion End-to-End, BI & MMM | Amazon Ads" data-en="Marketing, Data & AdTech Director | C-Level Focus | Cross-Functional Teams | End-to-End Automation, BI & MMM | Amazon Ads">Director de Marketing, Data & AdTech | Enfoque C-Level | Equipos Cross-Functional | Automatizacion End-to-End, BI & MMM | Amazon Ads</p>
+      <div class="hero-actions reveal reveal-d4">
+        <a href="mailto:goliverosdiaz@gmail.com" class="btn-primary" data-es="HABLEMOS" data-en="LET'S TALK">HABLEMOS</a>
+        <a href="#expertise" class="btn-secondary" data-es="VER EXPERTISE" data-en="VIEW EXPERTISE">VER EXPERTISE</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="section alt" id="expertise">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">Expertise</p>
+        <h2 class="section-title" data-es="Areas de <strong>conocimiento</strong>" data-en="Areas of <strong>expertise</strong>">Areas de <strong>conocimiento</strong></h2>
+        <p class="section-description" data-es="Un perfil hibrido entre estrategia de marketing, data science y tecnologia, con ejecucion real en cada capa." data-en="A hybrid profile across marketing strategy, data science and technology, with real execution at every layer.">Un perfil hibrido entre estrategia de marketing, data science y tecnologia, con ejecucion real en cada capa.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card span-2 reveal">
+          <span class="card-number">01</span>
+          <h3>Business Intelligence & Data</h3>
+          <p data-es="Ecosistemas de BI desde cero: ingesta, modelado, ETL/ELT, gobernanza y dashboards ejecutivos C-Level en tiempo real. Creador de Data Guildin y Galaxy Metrics (Havas)." data-en="BI ecosystems built from scratch: ingestion, modeling, ETL/ELT, governance and real-time C-Level executive dashboards. Creator of Data Guildin and Galaxy Metrics (Havas).">Ecosistemas de BI desde cero: ingesta, modelado, ETL/ELT, gobernanza y dashboards ejecutivos C-Level en tiempo real. Creador de Data Guildin y Galaxy Metrics (Havas).</p>
+          <div class="card-tags">
+            <span class="chip">SQL avanzado</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">Plotly</span>
+            <span class="chip">MariaDB</span>
+            <span class="chip">Excel modelado</span>
+            <span class="chip">Forecasting</span>
+          </div>
+        </div>
+        <div class="card reveal">
+          <span class="card-number">02</span>
+          <h3 data-es="Liderazgo & Estrategia" data-en="Leadership & Strategy">Liderazgo & Estrategia</h3>
+          <p data-es="Equipos de +80 personas. Squads cross-functional en Performance, BI, Desarrollo y Creatividad. Scrum & Kanban." data-en="Teams of 80+ people. Cross-functional squads in Performance, BI, Development and Creative. Scrum & Kanban.">Equipos de +80 personas. Squads cross-functional en Performance, BI, Desarrollo y Creatividad. Scrum & Kanban.</p>
+          <div class="card-tags">
+            <span class="chip">Scrum</span>
+            <span class="chip">Kanban</span>
+            <span class="chip" data-es="Transformacion digital" data-en="Digital transformation">Transformacion digital</span>
+          </div>
+        </div>
+        <div class="card reveal reveal-d1">
+          <span class="card-number">03</span>
+          <h3 data-es="Econometria" data-en="Econometrics">Econometria</h3>
+          <p data-es="Marketing Mix Modeling con Robyn, modelos AdStock, atribucion cross-channel y elasticidad de precios." data-en="Marketing Mix Modeling with Robyn, AdStock models, cross-channel attribution and price elasticity.">Marketing Mix Modeling con Robyn, modelos AdStock, atribucion cross-channel y elasticidad de precios.</p>
+          <div class="card-tags">
+            <span class="chip">MMM</span>
+            <span class="chip">AdStock</span>
+            <span class="chip" data-es="Atribucion" data-en="Attribution">Atribucion</span>
+            <span class="chip" data-es="Regresion" data-en="Regression">Regresion</span>
+          </div>
+        </div>
+        <div class="card reveal">
+          <span class="card-number">04</span>
+          <h3>Performance & AdTech</h3>
+          <p data-es="Operacion multicanal full-funnel en Google, Meta, TikTok y DV360. Compra programatica, BrandFormance y ecosistemas MarTech/AdTech." data-en="Full-funnel multichannel operations on Google, Meta, TikTok and DV360. Programmatic buying, BrandFormance and MarTech/AdTech ecosystems.">Operacion multicanal full-funnel en Google, Meta, TikTok y DV360. Compra programatica, BrandFormance y ecosistemas MarTech/AdTech.</p>
+          <div class="card-tags">
+            <span class="chip">Google Ads</span>
+            <span class="chip">Meta Ads</span>
+            <span class="chip">TikTok Ads</span>
+            <span class="chip">DV360</span>
+            <span class="chip">SEO/SEM</span>
+            <span class="chip">A/B Testing</span>
+          </div>
+        </div>
+        <div class="card reveal reveal-d1">
+          <span class="card-number">05</span>
+          <h3 data-es="Fotografia & Diseño" data-en="Photography & Design">Fotografia & Diseño</h3>
+          <p data-es="Fotografo profesional (Motivarte). Diseno grafico, operacion de drones, produccion audiovisual y storytelling visual de marca." data-en="Professional photographer (Motivarte). Graphic design, drone operation, audiovisual production and brand visual storytelling.">Fotografo profesional (Motivarte). Diseno grafico, operacion de drones, produccion audiovisual y storytelling visual de marca.</p>
+          <div class="card-tags">
+            <span class="chip" data-es="Fotografia" data-en="Photography">Fotografia</span>
+            <span class="chip">Brand identity</span>
+            <span class="chip">Drones</span>
+            <span class="chip">Video</span>
+          </div>
+        </div>
+        <div class="card span-2 reveal">
+          <span class="card-number">06</span>
+          <h3>Software</h3>
+          <p data-es="Herramientas de analisis, visualizacion, diseno y produccion audiovisual." data-en="Analysis, visualization, design and audiovisual production tools.">Herramientas de analisis, visualizacion, diseno y produccion audiovisual.</p>
+          <div class="card-tags">
+            <span class="chip">Tableau</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Google Analytics</span>
+            <span class="chip">Adobe Photoshop</span>
+            <span class="chip">Adobe Illustrator</span>
+            <span class="chip">Adobe InDesign</span>
+            <span class="chip">Adobe Premiere</span>
+            <span class="chip">CapCut</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACTO -->
+  <section class="section" id="impacto">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label" data-es="Impacto" data-en="Impact">Impacto</p>
+        <h2 class="section-title" data-es="Numeros que <strong>hablan</strong>" data-en="Numbers that <strong>speak</strong>">Numeros que <strong>hablan</strong></h2>
+      </div>
+
+      <div class="grid grid-4">
+        <div class="card metric-card reveal">
+          <span class="value">+80</span>
+          <span class="desc" data-es="Personas lideradas en equipos multidisciplinarios" data-en="People led across multidisciplinary teams">Personas lideradas en equipos multidisciplinarios</span>
+        </div>
+        <div class="card metric-card reveal reveal-d1">
+          <span class="value">+28%</span>
+          <span class="desc" data-es="Mejora en eficiencia de inversion (modelos AdStock)" data-en="Investment efficiency improvement (AdStock models)">Mejora en eficiencia de inversion (modelos AdStock)</span>
+        </div>
+        <div class="card metric-card reveal reveal-d2">
+          <span class="value">-40%</span>
+          <span class="desc" data-es="Reduccion en tareas manuales via automatizacion" data-en="Reduction in manual tasks through automation">Reduccion en tareas manuales via automatizacion</span>
+        </div>
+        <div class="card metric-card reveal reveal-d3">
+          <span class="value">RT</span>
+          <span class="desc" data-es="Time-to-insight reducido de dias a real-time" data-en="Time-to-insight reduced from days to real-time">Time-to-insight reducido de dias a real-time</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IA & TECH -->
+  <section class="section alt" id="ia">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label" data-es="IA & Tech" data-en="AI & Tech">IA & Tech</p>
+        <h2 class="section-title" data-es="Inteligencia artificial y <strong>desarrollo</strong>" data-en="Artificial intelligence and <strong>development</strong>">Inteligencia artificial y <strong>desarrollo</strong></h2>
+        <p class="section-description" data-es="Diplomatura en IA (Universidad Austral, 2024). Aplicacion real en productos propios, no solo teoria." data-en="AI Diploma (Universidad Austral, 2024). Real-world application in own products, not just theory.">Diplomatura en IA (Universidad Austral, 2024). Aplicacion real en productos propios, no solo teoria.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <span class="card-number">01</span>
+          <h3 data-es="Inteligencia Artificial" data-en="Artificial Intelligence">Inteligencia Artificial</h3>
+          <p data-es="Arquitecturas RAG, integracion de Claude API, agentes de voz con ElevenAgents, prompt engineering avanzado, compliance de claims y desarrollo con Claude Code." data-en="RAG architectures, Claude API integration, voice agents with ElevenAgents, advanced prompt engineering, claims compliance and development with Claude Code.">Arquitecturas RAG, integracion de Claude API, agentes de voz con ElevenAgents, prompt engineering avanzado, compliance de claims y desarrollo con Claude Code.</p>
+          <div class="card-tags">
+            <span class="chip">RAG</span>
+            <span class="chip">Claude API</span>
+            <span class="chip">Claude Code</span>
+            <span class="chip">ElevenAgents</span>
+            <span class="chip">NLP</span>
+            <span class="chip">Computer Vision</span>
+            <span class="chip">ML</span>
+            <span class="chip">Prompt Engineering</span>
+          </div>
+        </div>
+        <div class="card reveal reveal-d1">
+          <span class="card-number">02</span>
+          <h3 data-es="Stack Tecnico" data-en="Tech Stack">Stack Tecnico</h3>
+          <p data-es="Stack real de backend y automatizacion. Python, FastAPI, DuckDB, PHP, Node.js, MySQL, APIs REST y pipelines end-to-end." data-en="Real backend and automation stack. Python, FastAPI, DuckDB, PHP, Node.js, MySQL, REST APIs and end-to-end pipelines.">Stack real de backend y automatizacion. Python, FastAPI, DuckDB, PHP, Node.js, MySQL, APIs REST y pipelines end-to-end.</p>
+          <div class="card-tags">
+            <span class="chip">Python</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">DuckDB</span>
+            <span class="chip">PHP</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">Git</span>
+            <span class="chip">APIs REST</span>
+            <span class="chip">HTML/CSS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E-COMMERCE -->
+  <section class="section" id="ecommerce">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label">E-commerce & Retail</p>
+        <h2 class="section-title" data-es="Venta digital y <strong>retail</strong>" data-en="Digital sales and <strong>retail</strong>">Venta digital y <strong>retail</strong></h2>
+        <p class="section-description" data-es="Amazon FBA, TikTok Shop, lanzamiento de e-commerce y trade marketing en canal farmacia." data-en="Amazon FBA, TikTok Shop, e-commerce launch and pharmacy trade marketing.">Amazon FBA, TikTok Shop, lanzamiento de e-commerce y trade marketing en canal farmacia.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <span class="card-number">01</span>
+          <h3>Amazon FBA</h3>
+          <p data-es="Estrategia de listing, fases de PPC, Subscribe & Save y Amazon Ads." data-en="Listing strategy, PPC phases, Subscribe & Save and Amazon Ads.">Estrategia de listing, fases de PPC, Subscribe & Save y Amazon Ads.</p>
+        </div>
+        <div class="card reveal reveal-d1">
+          <span class="card-number">02</span>
+          <h3>TikTok Shop</h3>
+          <p data-es="Estrategia de afiliados y contenido para conversion en social commerce." data-en="Affiliate strategy and content for social commerce conversion.">Estrategia de afiliados y contenido para conversion en social commerce.</p>
+        </div>
+        <div class="card reveal reveal-d2">
+          <span class="card-number">03</span>
+          <h3>Retail & Trade</h3>
+          <p data-es="Pricing retail, estrategia de entrada en gondola y trade marketing. Presencia en Walmart y Walgreens." data-en="Retail pricing, shelf entry strategy and trade marketing. Presence in Walmart and Walgreens.">Pricing retail, estrategia de entrada en gondola y trade marketing. Presencia en Walmart y Walgreens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMACION -->
+  <section class="section alt" id="formacion">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label" data-es="Formacion" data-en="Education">Formacion</p>
+        <h2 class="section-title" data-es="Educacion y <strong>certificaciones</strong>" data-en="Education and <strong>certifications</strong>">Educacion y <strong>certificaciones</strong></h2>
+      </div>
+
+      <div class="grid grid-2" style="align-items: start;">
+        <div class="reveal">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">2024</div>
+              <div class="timeline-title" data-es="Diplomatura en Inteligencia Artificial" data-en="Diploma in Artificial Intelligence">Diplomatura en Inteligencia Artificial</div>
+              <div class="timeline-sub">Universidad Austral</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2019 – 2020</div>
+              <div class="timeline-title" data-es="Diseno Grafico" data-en="Graphic Design">Diseno Grafico</div>
+              <div class="timeline-sub">Centro Pampa</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2015</div>
+              <div class="timeline-title" data-es="Marketing Digital & Diseno Web" data-en="Digital Marketing & Web Design">Marketing Digital & Diseno Web</div>
+              <div class="timeline-sub">DaVinci — Escuela de Arte Multimedial</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2007 – 2009</div>
+              <div class="timeline-title" data-es="Fotografo Profesional" data-en="Professional Photographer">Fotografo Profesional</div>
+              <div class="timeline-sub" data-es="Escuela Motivarte — Premio Mejor Fotografia" data-en="Escuela Motivarte — Best Photography Award">Escuela Motivarte — Premio Mejor Fotografia</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-d1">
+          <div class="cert-item"><div class="cert-check">&#10003;</div><span>Introduction to Data</span></div>
+          <div class="cert-item"><div class="cert-check">&#10003;</div><span>Understanding Prompt Engineering</span></div>
+          <div class="cert-item"><div class="cert-check">&#10003;</div><span>Introduction to Generative AI</span></div>
+          <div class="cert-item"><div class="cert-check">&#10003;</div><span>Understanding Machine Learning</span></div>
+          <div class="cert-item"><div class="cert-check">&#10003;</div><span>Introduction to ChatGPT</span></div>
+          <div class="cert-item"><div class="cert-check">&#10003;</div><span>Data Science for Everyone</span></div>
+          <div class="cert-item"><div class="cert-check">&#10003;</div><span>Introduction to SQL</span></div>
+          <div class="cert-item"><div class="cert-check">&#10003;</div><span>Analyzing Data in Tableau</span></div>
+          <div class="cert-item"><div class="cert-check">&#10003;</div><span>Marketing Analytics for Business</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXTRAS -->
+  <section class="section" style="padding: 56px 48px;">
+    <div class="extras-bar reveal">
+      <div>
+        <p class="section-label" style="margin-bottom: 6px;" data-es="Idiomas & Extra" data-en="Languages & Extra">Idiomas & Extra</p>
+        <h3 data-es="Ingles profesional completo &middot; Buzo PADI &middot; Deportista multidisciplinario" data-en="Full professional English &middot; PADI Diver &middot; Multisport athlete">Ingles profesional completo &middot; Buzo PADI &middot; Deportista multidisciplinario</h3>
+      </div>
+      <div class="card-tags">
+        <span class="chip" data-es="Natacion" data-en="Swimming">Natacion</span>
+        <span class="chip" data-es="Ciclismo" data-en="Cycling">Ciclismo</span>
+        <span class="chip">Running</span>
+        <span class="chip">Trekking</span>
+        <span class="chip" data-es="Escalada" data-en="Climbing">Escalada</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <ul class="footer-links">
+      <li><a href="mailto:goliverosdiaz@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/goliverosdiaz" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://www.goliverosdiaz.com" target="_blank" rel="noopener">Web</a></li>
+    </ul>
+    <p>Guido Oliveros Diaz &middot; Buenos Aires, Argentina</p>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id');
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    function setLang(lang) {
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('title') === (lang === 'es' ? 'Español' : 'English'));
+      });
+      document.documentElement.lang = lang;
+    }
+  </script>
+</body>
+</html>
