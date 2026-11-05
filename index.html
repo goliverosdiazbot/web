@@ -158,13 +158,14 @@
       object-fit: cover;
     }
 
+    .hero-sub { font-size: 13px; color: #878787; font-weight: 300; letter-spacing: 0.3px; max-width: 640px; margin: 0 auto 32px; line-height: 1.6; }
     .hero-tagline {
-      font-size: 13px;
-      color: #878787;
-      font-weight: 300;
-      letter-spacing: 0.3px;
-      line-height: 1.6;
-      margin-bottom: 32px;
+      font-size: 26px;
+      color: #111;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+      margin-bottom: 20px;
     }
 
     .hero-label {
@@ -258,6 +259,7 @@
     .grid-2 { grid-template-columns: repeat(2, 1fr); }
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
     .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-5 { grid-template-columns: repeat(5, 1fr); }
     .span-2 { grid-column: span 2; }
 
     /* ===== CARDS ===== */
@@ -505,7 +507,7 @@
       .hamburger { display: block; }
       .section { padding: 64px 24px; }
       .hero { padding: 100px 24px 64px; }
-      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
       .span-2 { grid-column: span 1; }
       .navbar { padding: 0 24px; }
       .footer { padding: 48px 24px; }
@@ -519,9 +521,9 @@
   <nav class="navbar" id="navbar">
     <a href="#hero" class="nav-name">Guido Oliveros Diaz</a>
     <ul class="nav-links">
+      <li><a href="#ia" data-es="IA" data-en="AI">IA</a></li>
       <li><a href="#expertise" data-es="Expertise" data-en="Expertise">Expertise</a></li>
       <li><a href="#impacto" data-es="Impacto" data-en="Impact">Impacto</a></li>
-      <li><a href="#ia" data-es="IA & Tech" data-en="AI & Tech">IA & Tech</a></li>
       <li><a href="#ecommerce">E-commerce</a></li>
       <li><a href="#formacion" data-es="Formacion" data-en="Education">Formacion</a></li>
     </ul>
@@ -540,9 +542,9 @@
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" onclick="toggleMenu()">&times;</button>
+    <a href="#ia" onclick="toggleMenu()" data-es="IA" data-en="AI">IA</a>
     <a href="#expertise" onclick="toggleMenu()">Expertise</a>
     <a href="#impacto" onclick="toggleMenu()" data-es="Impacto" data-en="Impact">Impacto</a>
-    <a href="#ia" onclick="toggleMenu()" data-es="IA & Tech" data-en="AI & Tech">IA & Tech</a>
     <a href="#ecommerce" onclick="toggleMenu()">E-commerce</a>
     <a href="#formacion" onclick="toggleMenu()" data-es="Formacion" data-en="Education">Formacion</a>
     <a href="mailto:goliverosdiaz@gmail.com" onclick="toggleMenu()" data-es="Contacto" data-en="Contact">Contacto</a>
@@ -559,16 +561,141 @@
         <img src="profile.jpg" alt="Guido Oliveros Diaz">
       </div>
       <p class="hero-label reveal reveal-d1">Guido Oliveros Diaz</p>
-      <p class="hero-tagline reveal reveal-d1" data-es="Director de Marketing, Data & AdTech | Enfoque C-Level | Equipos Cross-Functional | Automatizacion End-to-End, BI & MMM | Amazon Ads" data-en="Marketing, Data & AdTech Director | C-Level Focus | Cross-Functional Teams | End-to-End Automation, BI & MMM | Amazon Ads">Director de Marketing, Data & AdTech | Enfoque C-Level | Equipos Cross-Functional | Automatizacion End-to-End, BI & MMM | Amazon Ads</p>
+      <p class="hero-tagline reveal reveal-d1" data-es="Chief AI & Data Science Officer · Data & AI Leader" data-en="Chief AI & Data Science Officer · Data & AI Leader">Chief AI & Data Science Officer · Data & AI Leader</p>
+      <p class="hero-sub reveal reveal-d2" data-es="Marketing, Data & AdTech | Enfoque C-Level | BI, MMM & Automatizacion End-to-End | IA Aplicada (RAG, Agentes) | Amazon Ads" data-en="Marketing, Data & AdTech | C-Level Focus | BI, MMM & End-to-End Automation | Applied AI (RAG, AI Agents) | Amazon Ads">Marketing, Data & AdTech | Enfoque C-Level | BI, MMM & Automatizacion End-to-End | IA Aplicada (RAG, Agentes) | Amazon Ads</p>
       <div class="hero-actions reveal reveal-d4">
         <a href="https://wa.me/5491140758228?text=Hola%20Guido%2C%20vi%20tu%20perfil%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener" class="btn-primary" data-es="HABLEMOS" data-en="LET'S TALK">HABLEMOS</a>
-        <a href="#expertise" class="btn-secondary" data-es="VER EXPERTISE" data-en="VIEW EXPERTISE">VER EXPERTISE</a>
+        <a href="#ia" class="btn-secondary" data-es="VER PROYECTOS DE IA" data-en="VIEW AI PROJECTS">VER PROYECTOS DE IA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- IA -->
+  <section class="section alt" id="ia">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <p class="section-label" data-es="IA Aplicada" data-en="Applied AI">IA Aplicada</p>
+        <h2 class="section-title" data-es="Inteligencia artificial <strong>en produccion</strong>" data-en="Artificial intelligence <strong>in production</strong>">Inteligencia artificial <strong>en produccion</strong></h2>
+        <p class="section-description" data-es="Como Chief AI & Data Science Officer en Guildin construyo agentes de IA y automatizacion con LLMs sobre la operacion comercial real. Diplomatura en IA (Universidad Austral, 2024). Productos propios, no solo teoria." data-en="As Chief AI & Data Science Officer at Guildin I build AI agents and LLM-powered automation on top of real commercial operations. Diploma in AI (Universidad Austral, 2024). Own products, not just theory.">Como Chief AI & Data Science Officer en Guildin construyo agentes de IA y automatizacion con LLMs sobre la operacion comercial real. Diplomatura en IA (Universidad Austral, 2024). Productos propios, no solo teoria.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <span class="card-number">01</span>
+          <h3 data-es="IA Aplicada & Agentes" data-en="Applied AI & Agents">IA Aplicada & Agentes</h3>
+          <p data-es="Agentes LLM, arquitecturas RAG, copilotos de venta y chatbots. Integracion de Claude API, Claude Code y conectores MCP en los flujos diarios del equipo para automatizar analisis y reporting." data-en="LLM agents, RAG architectures, sales copilots and chatbots. Claude API, Claude Code and MCP connectors embedded into daily team workflows to automate analysis and reporting.">Agentes LLM, arquitecturas RAG, copilotos de venta y chatbots. Integracion de Claude API, Claude Code y conectores MCP en los flujos diarios del equipo para automatizar analisis y reporting.</p>
+          <div class="card-tags">
+            <span class="chip">LLM Agents</span>
+            <span class="chip">RAG</span>
+            <span class="chip">Claude API</span>
+            <span class="chip">Claude Code</span>
+            <span class="chip">MCP</span>
+            <span class="chip">AI Chatbots</span>
+            <span class="chip">Sales Copilots</span>
+            <span class="chip">Prompt Engineering</span>
+            <span class="chip">n8n</span>
+          </div>
+        </div>
+        <div class="card reveal reveal-d1">
+          <span class="card-number">02</span>
+          <h3 data-es="Machine Learning & Data Science" data-en="Machine Learning & Data Science">Machine Learning & Data Science</h3>
+          <p data-es="Modelos predictivos, clustering, NLP y computer vision. Modelos de pricing y escenarios de margen (regresion) para entrar en las principales cadenas de farmacias de Peru." data-en="Predictive modeling, clustering, NLP and computer vision. Pricing and margin-scenario models (regression) for entry into Peru's leading pharmacy chains.">Modelos predictivos, clustering, NLP y computer vision. Modelos de pricing y escenarios de margen (regresion) para entrar en las principales cadenas de farmacias de Peru.</p>
+          <div class="card-tags">
+            <span class="chip">Predictive Models</span>
+            <span class="chip">Clustering</span>
+            <span class="chip">NLP</span>
+            <span class="chip">Computer Vision</span>
+            <span class="chip">Pricing Models</span>
+            <span class="chip">Regression</span>
+          </div>
+        </div>
+        <div class="card reveal reveal-d2">
+          <span class="card-number">03</span>
+          <h3 data-es="Stack Tecnico" data-en="Tech Stack">Stack Tecnico</h3>
+          <p data-es="Stack real de backend y automatizacion. Python, FastAPI, Flask, DuckDB, PHP, Node.js, MySQL/MariaDB, APIs REST, n8n y pipelines end-to-end." data-en="Real backend and automation stack. Python, FastAPI, Flask, DuckDB, PHP, Node.js, MySQL/MariaDB, REST APIs, n8n and end-to-end pipelines.">Stack real de backend y automatizacion. Python, FastAPI, Flask, DuckDB, PHP, Node.js, MySQL/MariaDB, APIs REST, n8n y pipelines end-to-end.</p>
+          <div class="card-tags">
+            <span class="chip">Python</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">Flask</span>
+            <span class="chip">DuckDB</span>
+            <span class="chip">PHP</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">MariaDB</span>
+            <span class="chip">APIs REST</span>
+            <span class="chip">Git</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header reveal" style="margin-top: 64px;">
+        <p class="section-label" data-es="Proyectos" data-en="Projects">Proyectos</p>
+        <h2 class="section-title" data-es="Proyectos de IA <strong>seleccionados</strong>" data-en="Selected AI <strong>projects</strong>">Proyectos de IA <strong>seleccionados</strong></h2>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <span class="card-number">01</span>
+          <h3 data-es="HAL9000" data-en="HAL9000">HAL9000</h3>
+          <p data-es="Copiloto en tiempo real para asesores de venta de call center: sugiere que decir segun producto y etapa de venta (guion de 7 pasos), con un loop de feedback que mejora sus respuestas." data-en="Real-time copilot for call-center sales agents: suggests what to say by product and sales stage (7-step framework), with a feedback loop that improves its answers.">Copiloto en tiempo real para asesores de venta de call center: sugiere que decir segun producto y etapa de venta (guion de 7 pasos), con un loop de feedback que mejora sus respuestas.</p>
+          <div class="card-tags">
+            <span class="chip">Claude API</span>
+            <span class="chip">RAG</span>
+            <span class="chip">Knowledge Bases</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">PHP</span>
+          </div>
+        </div>
+        <div class="card reveal reveal-d1">
+          <span class="card-number">02</span>
+          <h3 data-es="Chatbot de RRHH" data-en="HR Chatbot">Chatbot de RRHH</h3>
+          <p data-es="Responde automaticamente las consultas de RRHH de los empleados de la operacion de Peru, por WhatsApp, sin pasar por el equipo de RRHH." data-en="Automatically answers HR questions from employees of the Peru operations, via WhatsApp, without going through the HR team.">Responde automaticamente las consultas de RRHH de los empleados de la operacion de Peru, por WhatsApp, sin pasar por el equipo de RRHH.</p>
+          <div class="card-tags">
+            <span class="chip">n8n</span>
+            <span class="chip">WhatsApp</span>
+            <span class="chip">LLM</span>
+          </div>
+        </div>
+        <div class="card reveal reveal-d2">
+          <span class="card-number">03</span>
+          <h3 data-es="Facturacion electronica Peru" data-en="Peru e-invoicing automation">Facturacion electronica Peru</h3>
+          <p data-es="Facturacion electronica sin intervencion manual: validacion de identidad del cliente (Reniec), emision via SUNAT y cargas de datos normalizadas. Objetivo: 100% automatizado en enero 2027." data-en="Hands-free electronic invoicing: customer ID validation (Reniec), SUNAT issuance and normalized data loads. Target: fully automated by Jan 2027.">Facturacion electronica sin intervencion manual: validacion de identidad del cliente (Reniec), emision via SUNAT y cargas de datos normalizadas. Objetivo: 100% automatizado en enero 2027.</p>
+          <div class="card-tags">
+            <span class="chip">SUNAT API</span>
+            <span class="chip">Reniec</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">n8n</span>
+          </div>
+        </div>
+        <div class="card reveal">
+          <span class="card-number">04</span>
+          <h3 data-es="Garmin Coach · Trianator" data-en="Garmin Coach · Trianator">Garmin Coach · Trianator</h3>
+          <p data-es="Sistema de entrenamiento personal con segundo cerebro: ingesta diaria por API (reloj, ciclocomputador, sueno, HRV), modelos predictivos ajustados a mis propias carreras y libros de coaching convertidos en reglas. Entrega el plan del dia al dashboard y al reloj, y se reajusta con cada entrenamiento." data-en="Personal training system with a second brain: daily API ingestion (watch, bike computer, sleep, HRV), predictive models fitted to my own races, and coaching books turned into rules. Delivers the day's plan to a dashboard and the watch, and refits itself with every workout.">Sistema de entrenamiento personal con segundo cerebro: ingesta diaria por API (reloj, ciclocomputador, sueno, HRV), modelos predictivos ajustados a mis propias carreras y libros de coaching convertidos en reglas. Entrega el plan del dia al dashboard y al reloj, y se reajusta con cada entrenamiento.</p>
+          <div class="card-tags">
+            <span class="chip">Python</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">DuckDB</span>
+            <span class="chip">Plotly</span>
+            <span class="chip">Claude</span>
+            <span class="chip">Garmin API</span>
+          </div>
+        </div>
+        <div class="card reveal reveal-d1">
+          <span class="card-number">05</span>
+          <h3 data-es="EnigmaPeru" data-en="EnigmaPeru">EnigmaPeru</h3>
+          <p data-es="Plataforma de pricing para el mercado peruano, con modelos de escenarios de margen para cadenas de farmacias." data-en="Pricing platform for the Peruvian market, with margin-scenario models for pharmacy chains.">Plataforma de pricing para el mercado peruano, con modelos de escenarios de margen para cadenas de farmacias.</p>
+          <div class="card-tags">
+            <span class="chip">Python</span>
+            <span class="chip">Flask</span>
+            <span class="chip">MariaDB</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- EXPERTISE -->
-  <section class="section alt" id="expertise">
+  <section class="section" id="expertise">
     <div class="section-inner">
       <div class="section-header reveal">
         <p class="section-label">Expertise</p>
@@ -655,14 +782,18 @@
   </section>
 
   <!-- IMPACTO -->
-  <section class="section" id="impacto">
+  <section class="section alt" id="impacto">
     <div class="section-inner">
       <div class="section-header reveal">
         <p class="section-label" data-es="Impacto" data-en="Impact">Impacto</p>
         <h2 class="section-title" data-es="Numeros que <strong>hablan</strong>" data-en="Numbers that <strong>speak</strong>">Numeros que <strong>hablan</strong></h2>
       </div>
 
-      <div class="grid grid-4">
+      <div class="grid grid-5">
+        <div class="card metric-card reveal">
+          <span class="value">5</span>
+          <span class="desc" data-es="Productos de IA en produccion" data-en="AI products in production">Productos de IA en produccion</span>
+        </div>
         <div class="card metric-card reveal">
           <span class="value">+80</span>
           <span class="desc" data-es="Personas lideradas en equipos multidisciplinarios" data-en="People led across multidisciplinary teams">Personas lideradas en equipos multidisciplinarios</span>
@@ -678,51 +809,6 @@
         <div class="card metric-card reveal reveal-d3">
           <span class="value">RT</span>
           <span class="desc" data-es="Time-to-insight reducido de dias a real-time" data-en="Time-to-insight reduced from days to real-time">Time-to-insight reducido de dias a real-time</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IA & TECH -->
-  <section class="section alt" id="ia">
-    <div class="section-inner">
-      <div class="section-header reveal">
-        <p class="section-label" data-es="IA & Tech" data-en="AI & Tech">IA & Tech</p>
-        <h2 class="section-title" data-es="Inteligencia artificial y <strong>desarrollo</strong>" data-en="Artificial intelligence and <strong>development</strong>">Inteligencia artificial y <strong>desarrollo</strong></h2>
-        <p class="section-description" data-es="Diplomatura en IA (Universidad Austral, 2024). Aplicacion real en productos propios, no solo teoria." data-en="AI Diploma (Universidad Austral, 2024). Real-world application in own products, not just theory.">Diplomatura en IA (Universidad Austral, 2024). Aplicacion real en productos propios, no solo teoria.</p>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="card reveal">
-          <span class="card-number">01</span>
-          <h3 data-es="Inteligencia Artificial" data-en="Artificial Intelligence">Inteligencia Artificial</h3>
-          <p data-es="Arquitecturas RAG, integracion de Claude API, agentes de voz con ElevenAgents, prompt engineering avanzado, compliance de claims y desarrollo con Claude Code." data-en="RAG architectures, Claude API integration, voice agents with ElevenAgents, advanced prompt engineering, claims compliance and development with Claude Code.">Arquitecturas RAG, integracion de Claude API, agentes de voz con ElevenAgents, prompt engineering avanzado, compliance de claims y desarrollo con Claude Code.</p>
-          <div class="card-tags">
-            <span class="chip">RAG</span>
-            <span class="chip">Claude API</span>
-            <span class="chip">Claude Code</span>
-            <span class="chip">ElevenAgents</span>
-            <span class="chip">NLP</span>
-            <span class="chip">Computer Vision</span>
-            <span class="chip">ML</span>
-            <span class="chip">Prompt Engineering</span>
-          </div>
-        </div>
-        <div class="card reveal reveal-d1">
-          <span class="card-number">02</span>
-          <h3 data-es="Stack Tecnico" data-en="Tech Stack">Stack Tecnico</h3>
-          <p data-es="Stack real de backend y automatizacion. Python, FastAPI, DuckDB, PHP, Node.js, MySQL, APIs REST y pipelines end-to-end." data-en="Real backend and automation stack. Python, FastAPI, DuckDB, PHP, Node.js, MySQL, REST APIs and end-to-end pipelines.">Stack real de backend y automatizacion. Python, FastAPI, DuckDB, PHP, Node.js, MySQL, APIs REST y pipelines end-to-end.</p>
-          <div class="card-tags">
-            <span class="chip">Python</span>
-            <span class="chip">FastAPI</span>
-            <span class="chip">DuckDB</span>
-            <span class="chip">PHP</span>
-            <span class="chip">Node.js</span>
-            <span class="chip">MySQL</span>
-            <span class="chip">Git</span>
-            <span class="chip">APIs REST</span>
-            <span class="chip">HTML/CSS</span>
-          </div>
         </div>
       </div>
     </div>
